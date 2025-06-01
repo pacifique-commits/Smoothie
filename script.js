@@ -73,3 +73,24 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+// Mobile menu toggle
+const menuToggle = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+menuToggle.addEventListener('click', () => {
+  menuToggle.classList.toggle('active');
+  navLinks.classList.toggle('active');
+  
+  // Toggle body scroll when menu is open
+  document.body.style.overflow = 
+    document.body.style.overflow === 'hidden' ? 'visible' : 'hidden';
+});
+
+// Close menu when clicking a link
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    menuToggle.classList.remove('active');
+    navLinks.classList.remove('active');
+    document.body.style.overflow = 'visible';
+  });
+});
